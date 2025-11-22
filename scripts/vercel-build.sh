@@ -10,8 +10,12 @@ cd Frontend
 echo "Installing dependencies..."
 npm install --unsafe-perm
 
-# Run the build
+# Install Vite locally
+echo "Installing Vite..."
+npm install --save-dev vite
+
+# Run the build using the local Vite binary
 echo "Running Vite build..."
-npx --no-install vite build
+npx vite build
 
 echo "Build completed successfully!"

@@ -6,8 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "Frontend/dist",
-        "installCommand": "cd Frontend && npm install --unsafe-perm && npm install -g vite",
-        "buildCommand": "cd Frontend && npx --yes --package=vite@latest vite build"
+        "installCommand": "chmod +x scripts/vercel-build.sh && ./scripts/vercel-build.sh"
       }
     }
   ],
