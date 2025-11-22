@@ -8,19 +8,27 @@ try {
   // Change to Frontend directory
   process.chdir('Frontend');
   
-  // Install dependencies with the correct permissions
+  // Install dependencies
   console.log('Installing dependencies...');
   execSync('npm install --unsafe-perm', { stdio: 'inherit' });
   
-  // Manually run Vite build
-  console.log('Running Vite build...');
-  const vitePath = path.resolve('node_modules/.bin/vite');
-  // Ensure execute permissions
-  if (fs.existsSync(vitePath)) {
-    fs.chmodSync(vitePath, '755');
+  // Install Vite if not present
+  if (!fs.existsSync('node_modules/vite')) {
+    console.log('Installing Vite...');
+    execSync('npm install --save-dev vite', { stdio: 'inherit' });
   }
+  
   // Run Vite build directly
-  execSync(`node ${vitePath} build`, { stdio: 'inherit' });
+  console.log('Running Vite build...');
+  const viteBin = path.resolve('node_modules/.bin/vite');
+  if (fs.existsSync(viteBin)) {
+    fs.chmodSync(viteBin, '755'); // Ensure execute permissions
+    execSync(`node ${viteBin} build`, { stdio: 'inherit' });
+  } else {
+    // Fallback to npx if vite binary not found
+    console.log('Vite binary not found, trying with npx...');
+    execSync('npx vite build', { stdio: 'inherit' });
+  }
   
   console.log('Build completed successfully!');
 } catch (error) {
