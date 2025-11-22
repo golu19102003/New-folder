@@ -2,10 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "scripts/build.js",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "Frontend/dist"
+        "distDir": "Frontend/dist",
+        "installCommand": "chmod +x scripts/vercel-build.sh && ./scripts/vercel-build.sh"
       }
     }
   ],
