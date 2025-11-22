@@ -6,7 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
-        "installCommand": "cd Frontend && npm install --unsafe-perm",
+        "installCommand": "cd Frontend && npm ci",
         "buildCommand": "cd Frontend && npm run build"
       }
     }
