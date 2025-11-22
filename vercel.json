@@ -2,11 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "Frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "Frontend/dist",
-        "installCommand": "chmod +x scripts/vercel-build.sh && ./scripts/vercel-build.sh"
+        "distDir": "dist",
+        "installCommand": "cd Frontend && npm install --unsafe-perm",
+        "buildCommand": "cd Frontend && npm run build"
       }
     }
   ],
