@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npx --no-install tsc --noEmit && vite build",
-    "type-check": "npx --no-install tsc --noEmit",
+    "build": "echo 'Build is handled by vercel-build.sh'",
+    "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "preview": "vite preview"
   },
