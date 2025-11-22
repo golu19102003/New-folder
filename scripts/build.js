@@ -5,16 +5,22 @@ const path = require('path');
 console.log('Starting build process...');
 
 try {
-  // Ensure we're in the Frontend directory
+  // Change to Frontend directory
   process.chdir('Frontend');
   
   // Install dependencies with the correct permissions
   console.log('Installing dependencies...');
   execSync('npm install --unsafe-perm', { stdio: 'inherit' });
   
-  // Run the build
+  // Manually run Vite build
   console.log('Running Vite build...');
-  execSync('npx --no-install vite build', { stdio: 'inherit' });
+  const vitePath = path.resolve('node_modules/.bin/vite');
+  // Ensure execute permissions
+  if (fs.existsSync(vitePath)) {
+    fs.chmodSync(vitePath, '755');
+  }
+  // Run Vite build directly
+  execSync(`node ${vitePath} build`, { stdio: 'inherit' });
   
   console.log('Build completed successfully!');
 } catch (error) {
