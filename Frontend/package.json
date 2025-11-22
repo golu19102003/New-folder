@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "echo 'Build is handled by vercel-build.sh'",
+    "build": "vite build",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "preview": "vite preview"
